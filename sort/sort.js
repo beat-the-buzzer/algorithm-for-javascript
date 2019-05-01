@@ -77,3 +77,47 @@ function mergeSort(arr, low, high) {
 var arrTest = [9, 3, 11, 7, 10, 4, 12, 8, 1];
 mergeSort(arrTest, 0, arrTest.length - 1);
 console.log(arrTest);
+
+// 快速排序算法实现
+
+// 快速排序的思想就是，寻找一个基准，然后把比基准小的数放在基准左边，把比基准大的数放在右边。
+// 然后对左右两边递归操作，即可完成排序
+
+function partition(arr, low, high) {
+  var i = low;
+  var j = high;
+  var pivot = arr[low]; // 基准值
+  while (i < j) {
+    while (i < j && arr[j] > pivot) {
+      j--; // 如果后面的元素比基准大，指针就往左走，这样就找到了右边比基准小的元素的索引
+    }
+    if (i < j) {
+      [arr[i], arr[j]] = [arr[j], arr[i]]; // 找到了右边比基准小的元素的索引，此时需要交换，然后左边指针加一
+      i++; // 这样最左边的元素必然是比基准小的元素
+    }
+    while (i < j && arr[i] <= pivot) {
+      i++; // 如果前面的元素比基准小，指针就往右走，这样就找到了左边比基准大的元素的索引
+    }
+    if (i < j) {
+      [arr[i], arr[j]] = [arr[j], arr[i]]; // 找到了左边比基准大的元素的索引，此时需要交换，然后右边指针减一
+      j--; // 这样最右边的元素必然是比基准大的元素
+    }
+  }
+  return i; // 最终得到基准值所在位置，并且此时基准左边都比基准小，右边都比基准大
+}
+
+var arrQuickTest = [5, 1, 7, 3, 9, 2, 8, 4, 6];
+partition(arrQuickTest, 0, arrQuickTest.length - 1); // 返回结果是4，也就是说，前四个都是比第五个小的，arrQuickTest变成[4, 1, 2, 3, 5, 9, 8, 7, 6]
+
+// 接下来就是递归了，我们需要对前四和后四这两部分再次划分，当不能再划分的时候，说明已经拍好了
+function quickSort1(arr, low, high) {
+  var mid = partition(arr, low, high); // 得到一次排序之后基准的位置
+  if (low < high) {
+    quickSort1(arr, low, mid - 1); // 比基准小的部分进行快速排序操作
+    quickSort1(arr, mid + 1, high); // 比基准大的部分进行快速排序操作
+    // mid的位置是正确的，不需要再次排序了
+  }
+}
+
+quickSort1(arrQuickTest, 0, arrQuickTest.length - 1);
+console.log(arrQuickTest);
