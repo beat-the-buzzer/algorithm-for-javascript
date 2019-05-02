@@ -13,3 +13,7 @@
 ##### 排序算法
 
 [https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/sort](https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/sort)
+
+##### 分治法
+
+[https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/divide-and-conquer](https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/divide-and-conquer)
