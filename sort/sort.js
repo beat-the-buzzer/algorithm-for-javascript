@@ -83,7 +83,7 @@ console.log(arrTest);
 // 快速排序的思想就是，寻找一个基准，然后把比基准小的数放在基准左边，把比基准大的数放在右边。
 // 然后对左右两边递归操作，即可完成排序
 
-function partition(arr, low, high) {
+function partition1(arr, low, high) {
   var i = low;
   var j = high;
   var pivot = arr[low]; // 基准值
@@ -107,11 +107,11 @@ function partition(arr, low, high) {
 }
 
 var arrQuickTest = [5, 1, 7, 3, 9, 2, 8, 4, 6];
-partition(arrQuickTest, 0, arrQuickTest.length - 1); // 返回结果是4，也就是说，前四个都是比第五个小的，arrQuickTest变成[4, 1, 2, 3, 5, 9, 8, 7, 6]
+partition1(arrQuickTest, 0, arrQuickTest.length - 1); // 返回结果是4，也就是说，前四个都是比第五个小的，arrQuickTest变成[4, 1, 2, 3, 5, 9, 8, 7, 6]
 
 // 接下来就是递归了，我们需要对前四和后四这两部分再次划分，当不能再划分的时候，说明已经拍好了
 function quickSort1(arr, low, high) {
-  var mid = partition(arr, low, high); // 得到一次排序之后基准的位置
+  var mid = partition1(arr, low, high); // 得到一次排序之后基准的位置
   if (low < high) {
     quickSort1(arr, low, mid - 1); // 比基准小的部分进行快速排序操作
     quickSort1(arr, mid + 1, high); // 比基准大的部分进行快速排序操作
@@ -121,3 +121,49 @@ function quickSort1(arr, low, high) {
 
 quickSort1(arrQuickTest, 0, arrQuickTest.length - 1);
 console.log(arrQuickTest);
+
+// 快速排序优化
+function partition2(arr, low, high) {
+  var i = low;
+  var j = high;
+  var pivot = arr[low];
+  while (i < j) {
+    while (i < j && arr[j] > pivot) {
+      j--;
+    }
+    while (i < j && arr[i] <= pivot) {
+      i++;
+    }
+    // 得到右边比基准值小的值的索引和左边比基准值大的值的索引
+    if (i < j) {
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+      i++;
+      j--;
+    }
+  }
+  // 经过上面的循环，和j应该相遇了，此时我们要看看下标为i的元素是否比基准大
+  if(i <= high) { 
+  // 书中的代码貌似会溢出，所以当i超出数组范围的时候，不作处理
+    if (arr[i] > pivot) {
+      // 此时交换基准和i-1对应的元素
+      [arr[low], arr[i - 1]] = [arr[i - 1], arr[low]];
+      return i - 1; // 返回基准位置
+    }  else {
+      [arr[low], arr[i]] = [arr[i], arr[low]];
+      return i;
+    }
+  }
+}
+
+function quickSort2(arr, low, high) {
+  var mid = partition2(arr, low, high); // 得到一次排序之后基准的位置
+  if (low < high) {
+    quickSort2(arr, low, mid - 1); // 比基准小的部分进行快速排序操作
+    quickSort2(arr, mid + 1, high); // 比基准大的部分进行快速排序操作
+    // mid的位置是正确的，不需要再次排序了
+  }
+}
+
+var arrQuickTest2 = [5, 1, 7, 3, 9, 2, 8, 4, 6];
+quickSort2(arrQuickTest2, 0, arrQuickTest2.length - 1);
+console.log(arrQuickTest2);
