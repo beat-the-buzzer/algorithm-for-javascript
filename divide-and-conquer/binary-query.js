@@ -18,5 +18,25 @@ function binaryQuery(arr, x) {
 
 var arrTest = [1, 2, 4, 6, 8, 9, 11, 15, 22, 32, 44, 56, 62, 77, 86, 99, 100];
 
-console.log(binaryQuery(arrTest, 32));
-console.log(binaryQuery(arrTest, 10));
+console.log(binaryQuery(arrTest, 32)); // 9
+console.log(binaryQuery(arrTest, 10)); // -1
+
+// 二分查找的递归实现
+function binaryQueryRe(arr, x, low, high) {
+  if (low > high) {
+    return -1;
+  }
+  var mid = parseInt((low + high) / 2);
+  if (x === arr[mid]) {
+    return mid;
+  } else if (x > arr[mid]) {
+    return binaryQueryRe(arr, x, mid + 1, high);
+  } else {
+    return binaryQueryRe(arr, x, low, mid - 1);
+  }
+}
+
+var arrTestRe = [1, 2, 4, 6, 8, 9, 11, 15, 22, 32, 44, 56, 62, 77, 86, 99, 100];
+
+console.log(binaryQueryRe(arrTestRe, 32, 0, arrTestRe.length - 1)); // 9
+console.log(binaryQueryRe(arrTestRe, 10, 0, arrTestRe.length - 1)); // -1
