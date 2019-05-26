@@ -18,7 +18,10 @@
 
 海盗船载重量为C，每件财宝的重量为wi，如何装载最多数量的财宝？
 
+[https://github.com/beat-the-buzzer/algorithm-for-javascript/blob/master/greedy/optimal-loading.js](https://github.com/beat-the-buzzer/algorithm-for-javascript/blob/master/greedy/optimal-loading.js)
+
 2、背包问题
 
 n种宝物，每种宝物都有对应的重量w和对应的价值v，一次只能运走m重量的宝物，一种宝物只能拿一样，宝物可以分割。如何带走最大价值的宝物？
 
+[https://github.com/beat-the-buzzer/algorithm-for-javascript/blob/master/greedy/knapsack.js](https://github.com/beat-the-buzzer/algorithm-for-javascript/blob/master/greedy/knapsack.js)

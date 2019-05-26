@@ -17,3 +17,7 @@
 ##### 分治法
 
 [https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/divide-and-conquer](https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/divide-and-conquer)
+
+##### 贪心算法
+
+[https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/greedy](https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/greedy)
