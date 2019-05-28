@@ -167,3 +167,20 @@ function quickSort2(arr, low, high) {
 var arrQuickTest2 = [5, 1, 7, 3, 9, 2, 8, 4, 6];
 quickSort2(arrQuickTest2, 0, arrQuickTest2.length - 1);
 console.log(arrQuickTest2);
+
+// 插入排序
+function insertSort(arr) {
+  var arrCopy = [...arr];
+  for (var i = 1; i < arrCopy.length; i++) {
+    var temp = arr[i]; // 记住这个元素，因为一会这个位置会被替换
+    var j = i - 1;
+    while (j >= 0 && arrCopy[j] > temp) {
+      arrCopy[j + 1] = arrCopy[j];
+      j--;
+    }
+    arrCopy[j + 1] = temp;
+  }
+  return arrCopy;
+}
+var insertSortArr = [4, 2, 1, 5, 3];
+console.log(insertSort(insertSortArr));
