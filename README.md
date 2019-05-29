@@ -21,3 +21,7 @@
 ##### 贪心算法
 
 [https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/greedy](https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/greedy)
+
+##### 动态规划法
+
+[https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/dynamic-programming](https://github.com/beat-the-buzzer/algorithm-for-javascript/tree/master/dynamic-programming)
